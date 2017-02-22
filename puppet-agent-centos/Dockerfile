@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos/systemd
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
 ENV PUPPET_AGENT_VERSION="1.8.3"
@@ -22,7 +22,6 @@ RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm &
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
-ENTRYPOINT ["/opt/puppetlabs/bin/puppet"]
-CMD ["agent", "--verbose", "--onetime", "--no-daemonize", "--summarize" ]
+CMD ["/usr/sbin/init"]
 
 COPY Dockerfile /
