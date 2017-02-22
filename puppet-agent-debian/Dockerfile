@@ -15,14 +15,16 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 RUN apt-get update && \
-    apt-get install -y wget && \
+    apt-get install -y wget lsb-release cron && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
     dpkg -i puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
     rm puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
     apt-get update && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    /opt/puppetlabs/puppet/bin/puppet config set autosign true --section master && \
+    /opt/puppetlabs/puppet/bin/puppet config set allow_duplicate_certs true --section master;
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 

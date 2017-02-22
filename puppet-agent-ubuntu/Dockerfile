@@ -15,7 +15,7 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y wget ca-certificates lsb-release && \
+    apt-get install --no-install-recommends -y wget ca-certificates lsb-release cron && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
     dpkg -i puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
     rm puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
@@ -24,7 +24,9 @@ RUN apt-get update && \
     apt-get remove --purge -y wget && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    /opt/puppetlabs/puppet/bin/puppet config set autosign true --section master && \
+    /opt/puppetlabs/puppet/bin/puppet config set allow_duplicate_certs true --section master;
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
