@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM jrei/systemd-ubuntu
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
 ENV PUPPET_AGENT_VERSION="1.8.3" UBUNTU_CODENAME="xenial"
@@ -30,7 +30,6 @@ RUN apt-get update && \
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
-ENTRYPOINT ["/opt/puppetlabs/bin/puppet"]
-CMD ["agent", "--verbose", "--onetime", "--no-daemonize", "--summarize" ]
+CMD ["/usr/sbin/init"]
 
 COPY Dockerfile /

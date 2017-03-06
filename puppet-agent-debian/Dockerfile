@@ -1,4 +1,4 @@
-FROM debian:8
+FROM jrei/systemd-debian
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
 ENV PUPPET_AGENT_VERSION="1.8.3" DEBIAN_CODENAME="jessie"
@@ -28,7 +28,6 @@ RUN apt-get update && \
 
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
-ENTRYPOINT ["/opt/puppetlabs/bin/puppet"]
-CMD ["agent", "--verbose", "--onetime", "--no-daemonize", "--summarize" ]
+CMD ["/usr/sbin/init"]
 
 COPY Dockerfile /
