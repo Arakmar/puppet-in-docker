@@ -1,7 +1,7 @@
 FROM arakmar/puppetserver-standalone
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPETDB_TERMINUS_VERSION="4.3.0"
+ENV PUPPETDB_TERMINUS_VERSION="4.4.0"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \

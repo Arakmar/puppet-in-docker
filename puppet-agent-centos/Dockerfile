@@ -1,7 +1,7 @@
 FROM centos/systemd
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="1.9.3"
+ENV PUPPET_AGENT_VERSION="1.10.4"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
