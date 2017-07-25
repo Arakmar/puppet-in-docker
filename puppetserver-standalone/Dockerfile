@@ -1,7 +1,7 @@
 FROM debian:8
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="1.10.4" PUPPET_SERVER_VERSION="2.7.2" DUMB_INIT_VERSION="1.2.0" DEBIAN_CODENAME="jessie" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
+ENV PUPPET_AGENT_VERSION="5.0.1" PUPPET_SERVER_VERSION="5.0.0" DUMB_INIT_VERSION="1.2.0" DEBIAN_CODENAME="jessie" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -16,11 +16,11 @@ LABEL org.label-schema.vendor="Puppet" \
 
 RUN apt-get update && \
     apt-get install -y wget && \
-    wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
+    wget https://apt.puppetlabs.com/puppet5-release-"$DEBIAN_CODENAME".deb && \
     wget https://github.com/Yelp/dumb-init/releases/download/v"$DUMB_INIT_VERSION"/dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
-    dpkg -i puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
+    dpkg -i puppet5-release-"$DEBIAN_CODENAME".deb && \
     dpkg -i dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
-    rm puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
+    rm puppet5-release-"$DEBIAN_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     apt-get update && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" puppetserver="$PUPPET_SERVER_VERSION"-1puppetlabs1 && \
     apt-get clean && \

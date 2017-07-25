@@ -1,7 +1,7 @@
 FROM centos/systemd
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="1.10.4"
+ENV PUPPET_AGENT_VERSION="5.0.1"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -14,7 +14,7 @@ LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.schema-version="1.0" \
       com.puppet.dockerfile="/Dockerfile"
 
-RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm && \
+RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm && \
     yum upgrade -y && \
     yum update -y && \
     yum install -y puppet-agent-"$PUPPET_AGENT_VERSION" && \

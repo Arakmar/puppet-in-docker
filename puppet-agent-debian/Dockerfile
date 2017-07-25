@@ -1,7 +1,7 @@
 FROM jrei/systemd-debian
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="1.10.4" DEBIAN_CODENAME="jessie"
+ENV PUPPET_AGENT_VERSION="5.0.1" DEBIAN_CODENAME="jessie"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -16,9 +16,9 @@ LABEL org.label-schema.vendor="Puppet" \
 
 RUN apt-get update && \
     apt-get install -y wget lsb-release cron && \
-    wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
-    dpkg -i puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
-    rm puppetlabs-release-pc1-"$DEBIAN_CODENAME".deb && \
+    wget https://apt.puppetlabs.com/puppet5-release-"$DEBIAN_CODENAME".deb && \
+    dpkg -i puppet5-release-"$DEBIAN_CODENAME".deb && \
+    rm puppet5-release-"$DEBIAN_CODENAME".deb && \
     apt-get update && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" && \
     apt-get clean && \
