@@ -1,4 +1,4 @@
-FROM debian:8
+FROM debian:9
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
 ENV PUPPETDB_VERSION="5.0.1" PUPPET_AGENT_VERSION="5.0.1" DUMB_INIT_VERSION="1.2.0" DEBIAN_CODENAME="jessie" PUPPETDB_USER=puppetdb PUPPETDB_PASSWORD=puppetdb PUPPETDB_JAVA_ARGS="-Djava.net.preferIPv4Stack=true -Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
