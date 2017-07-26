@@ -1,4 +1,4 @@
-FROM jrei/systemd-debian
+FROM jrei/systemd-debian:8
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
 ENV PUPPET_AGENT_VERSION="5.0.1" DEBIAN_CODENAME="jessie"
