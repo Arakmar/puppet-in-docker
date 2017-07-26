@@ -20,8 +20,10 @@ RUN apt-get update && \
     wget https://github.com/Yelp/dumb-init/releases/download/v"$DUMB_INIT_VERSION"/dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     dpkg -i puppet5-release-"$DEBIAN_CODENAME".deb && \
     dpkg -i dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
+    echo "deb http://ftp.fr.debian.org/debian/ jessie-backports main contrib non-free" > /etc/apt/sources.list.d/debian_backports.list && \
     rm puppet5-release-"$DEBIAN_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     apt-get update && \
+    apt-get install --no-install-recommends -y -t jessie-backports ca-certificates-java openjdk-8-jre-headless && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" puppetserver="$PUPPET_SERVER_VERSION"-1puppetlabs1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
