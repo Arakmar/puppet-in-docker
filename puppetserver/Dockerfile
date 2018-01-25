@@ -1,7 +1,7 @@
 FROM arakmar/puppetserver-standalone
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPETDB_TERMINUS_VERSION="5.0.1"
+ENV PUPPETDB_TERMINUS_VERSION="5.1.3"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -15,7 +15,7 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y puppetdb-termini="$PUPPETDB_TERMINUS_VERSION"-1puppetlabs1 && \
+    apt-get install --no-install-recommends -y puppetdb-termini="${PUPPETDB_TERMINUS_VERSION}-1${DEBIAN_CODENAME}" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
