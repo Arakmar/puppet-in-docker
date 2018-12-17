@@ -32,4 +32,4 @@ RUN apt-get update && \
     
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
-CMD ["/usr/sbin/init"]
+CMD ["/lib/systemd/systemd"]
