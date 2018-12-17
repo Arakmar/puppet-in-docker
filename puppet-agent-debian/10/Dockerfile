@@ -1,7 +1,7 @@
-FROM jrei/systemd-debian:9
+FROM jrei/systemd-debian:10
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="5.3.3" DEBIAN_CODENAME="stretch"
+ENV PUPPET_AGENT_VERSION="5.5.8" DEBIAN_CODENAME="stretch"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -31,5 +31,3 @@ RUN apt-get update && \
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 CMD ["/usr/sbin/init"]
-
-COPY Dockerfile /

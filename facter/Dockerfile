@@ -14,5 +14,3 @@ LABEL org.label-schema.vendor="Puppet" \
 
 ENTRYPOINT ["facter"]
 CMD [""]
-
-COPY Dockerfile /

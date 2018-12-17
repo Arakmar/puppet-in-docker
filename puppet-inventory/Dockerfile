@@ -19,5 +19,3 @@ RUN /opt/puppetlabs/bin/puppet module install puppetlabs-inventory --version "$P
 VOLUME /opt/puppetlabs /etc/puppetlabs
 
 ENTRYPOINT ["/opt/puppetlabs/bin/puppet", "inventory"]
-
-COPY Dockerfile /

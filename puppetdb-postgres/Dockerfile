@@ -13,5 +13,3 @@ LABEL org.label-schema.vendor="Puppet" \
       com.puppet.dockerfile="/Dockerfile"
 
 COPY docker-entrypoint-initdb.d /docker-entrypoint-initdb.d
-
-COPY Dockerfile /

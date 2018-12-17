@@ -1,7 +1,7 @@
 FROM debian:9
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="5.3.3" PUPPET_SERVER_VERSION="5.1.4" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="stretch" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
+ENV PUPPET_AGENT_VERSION="5.5.8" PUPPET_SERVER_VERSION="5.3.6" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="stretch" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -45,5 +45,3 @@ EXPOSE 8140
 
 ENTRYPOINT ["dumb-init", "/docker-entrypoint.sh"]
 CMD ["foreground" ]
-
-COPY Dockerfile /

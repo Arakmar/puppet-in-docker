@@ -34,5 +34,3 @@ EXPOSE 80
 WORKDIR /etc/caddy
 
 CMD ["/usr/bin/caddy"]
-
-COPY Dockerfile /

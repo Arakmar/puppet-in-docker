@@ -1,7 +1,7 @@
 FROM arakmar/puppetserver-standalone
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPETDB_TERMINUS_VERSION="5.1.3"
+ENV PUPPETDB_TERMINUS_VERSION="5.2.6"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -24,5 +24,3 @@ RUN puppet config set storeconfigs_backend puppetdb --section main && \
     puppet config set reports puppetdb --section main
 
 COPY puppetdb.conf /etc/puppetlabs/puppet/
-
-COPY Dockerfile /
