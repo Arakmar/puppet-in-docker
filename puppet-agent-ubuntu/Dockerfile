@@ -1,7 +1,7 @@
 FROM jrei/systemd-ubuntu
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="5.5.8" UBUNTU_CODENAME="bionic"
+ENV PUPPET_AGENT_VERSION="6.10.0" UBUNTU_CODENAME="bionic"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -16,9 +16,9 @@ LABEL org.label-schema.vendor="Puppet" \
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y wget ca-certificates lsb-release cron && \
-    wget https://apt.puppetlabs.com/puppet5-release-"$UBUNTU_CODENAME".deb && \
-    dpkg -i puppet5-release-"$UBUNTU_CODENAME".deb && \
-    rm puppet5-release-"$UBUNTU_CODENAME".deb && \
+    wget https://apt.puppetlabs.com/puppet6-release-"$UBUNTU_CODENAME".deb && \
+    dpkg -i puppet6-release-"$UBUNTU_CODENAME".deb && \
+    rm puppet6-release-"$UBUNTU_CODENAME".deb && \
     apt-get update && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$UBUNTU_CODENAME" && \
     apt-get remove --purge -y wget && \
