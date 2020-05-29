@@ -27,7 +27,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     /opt/puppetlabs/puppet/bin/puppet config set autosign true --section master && \
     /opt/puppetlabs/puppet/bin/puppet config set allow_duplicate_certs true --section master && \
-    rm /etc/systemd/system/multi-user.target.wants/mcollective.service && \
     rm /etc/systemd/system/multi-user.target.wants/puppet.service;
     
 ENV PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
