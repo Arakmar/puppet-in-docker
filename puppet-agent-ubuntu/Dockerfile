@@ -1,7 +1,7 @@
 FROM jrei/systemd-ubuntu
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="6.10.0" UBUNTU_CODENAME="bionic"
+ENV PUPPET_AGENT_VERSION="6.17.0" UBUNTU_CODENAME="bionic"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \

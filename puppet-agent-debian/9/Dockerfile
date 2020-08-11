@@ -1,7 +1,7 @@
 FROM jrei/systemd-debian:9
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="6.10.0" DEBIAN_CODENAME="stretch"
+ENV PUPPET_AGENT_VERSION="6.17.0" DEBIAN_CODENAME="stretch"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
