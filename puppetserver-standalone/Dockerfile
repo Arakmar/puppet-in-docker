@@ -1,7 +1,7 @@
 FROM debian:10
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="6.1è.0" PUPPET_SERVER_VERSION="6.7.0" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="buster" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
+ENV PUPPET_AGENT_VERSION="6.17.0" PUPPET_SERVER_VERSION="6.12.1" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="buster" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -23,7 +23,7 @@ RUN apt-get update && \
     echo "deb http://ftp.fr.debian.org/debian/ ${DEBIAN_CODENAME}-backports main contrib non-free" > /etc/apt/sources.list.d/debian_backports.list && \
     rm puppet6-release-"$DEBIAN_CODENAME".deb dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     apt-get update && \
-    apt-get install --no-install-recommends -y ca-certificates-java openjdk-8-jre-headless && \
+    apt-get install --no-install-recommends -y ca-certificates-java openjdk-11-jre-headless && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" puppetserver="$PUPPET_SERVER_VERSION"-1"$DEBIAN_CODENAME" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \

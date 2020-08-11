@@ -14,7 +14,7 @@ LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.schema-version="1.0" \
       com.puppet.dockerfile="/Dockerfile"
 
-RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm && \
+RUN rpm -Uvh http://yum.puppetlabs.com/puppet6/puppet6-release-el-8.noarch.rpm && \
     yum upgrade -y && \
     yum update -y && \
     yum install -y puppet-agent-"$PUPPET_AGENT_VERSION" && \

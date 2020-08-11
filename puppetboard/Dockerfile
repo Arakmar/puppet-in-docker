@@ -1,7 +1,7 @@
 FROM alpine:3.4
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_BOARD_VERSION="0.3.0" GUNICORN_VERSION="19.6.0"
+ENV PUPPET_BOARD_VERSION="2.2.0" GUNICORN_VERSION="20.0.0"
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
