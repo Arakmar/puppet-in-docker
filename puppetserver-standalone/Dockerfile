@@ -1,7 +1,7 @@
 FROM debian:10
 MAINTAINER Gareth Rushgrove "gareth@puppet.com"
 
-ENV PUPPET_AGENT_VERSION="6.17.0" PUPPET_SERVER_VERSION="6.12.1" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="buster" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
+ENV PUPPET_AGENT_VERSION="6.17.0" PUPPET_SERVER_VERSION="6.12.1" DUMB_INIT_VERSION="1.2.1" DEBIAN_CODENAME="buster" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" RUBY_GPG_VERSION="0.3.2" HIERA_EYAML_GPG_VERSION="0.5.0" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 LABEL org.label-schema.vendor="Puppet" \
       org.label-schema.url="https://github.com/puppetlabs/puppet-in-docker" \
@@ -27,7 +27,9 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y puppet-agent="$PUPPET_AGENT_VERSION"-1"$DEBIAN_CODENAME" puppetserver="$PUPPET_SERVER_VERSION"-1"$DEBIAN_CODENAME" && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    gem install --no-rdoc --no-ri r10k
+    gem install --no-rdoc --no-ri r10k \
+    puppetserver gem install ruby_gpg --version $RUBY_GPG_VERSION --no-document \
+	&& puppetserver gem install hiera-eyaml-gpg --version $HIERA_EYAML_GPG_VERSION --no-document
 
 COPY puppetserver /etc/default/puppetserver
 COPY logback.xml /etc/puppetlabs/puppetserver/
